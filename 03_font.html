@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>font style</title>
+
+        <style type="text/css">
+            /* 폰트 글꼴 */
+            /* 컴퓨터마다 가지고 있는 글꼴이 다르므로 여러 글꼴을 사용해서 에러 방지(그 컴퓨터에만 있는거는 ""사용, 기본 글꼴은 그냥 사용) */
+            p{font-family: "Blippo Blk BT", serif;} /* 내컴퓨터 - C드라이브 - Windows - Fonts 폴더에 있는 폰트만 사용가능(폰트를 마우스 우클릭으로 속성에 들어가서 자세히 탭 클릭 -> 제목이 코드에서 사용할 이름이다) */
+            p{font-family: "휴먼옛채", sans-serif;}
+            p{font-family: fantasy;}
+            p{font-family: cursive;}
+            p{font-family: monospace;}
+
+            /* 웹폰트: 별도의 ttf, otf 폰트파일로 폰트지정 */
+            /* 브라우저의 영향이 없는 글꼴지정 방식 */
+
+            /* 웹폰트 등록 문법 */
+            @font-face {
+                font-family: "My Font"; /* 폰트이름 */
+                src: url("./Swagger.ttf"); /* 경로 가져오기 */
+            }
+            @font-face {
+                font-family: "My Font2"; /* 폰트이름 */
+                src: url("./billabong.otf"); /* 경로 가져오기 */
+            }
+
+            /* 위에서 만들어진 웹폰트를 p요소에 적용하기 */
+            p{font-family: "My Font", serif;}
+            /* p{font-family: "My Font2", serif;} */
+
+            /* 폰트 크기 */
+            p{font-size: 30px;}
+            p{font-size: 150%;} /* 1.5배 */
+            p{font-size: 1.5em;} /* 1.5배 (권장) */
+
+            /* bold, normal */
+            p{font-weight: bold;}
+            p{font-weight: 100;}  /* 백단위로 두께 설정 */
+            
+            /* italic: 글자 아래 고정 후 기울기 */
+            p{font-style: italic;}
+
+            /* oblique: 전체적으로 기울기 (보기에 차이를 잘 모르겠음) */
+            p{font-style: oblique;}
+
+            /* 위 4개의 폰틑 관련 속성을 한번에 설정하기 */
+            /* 작성순서: [weight 또는 style (생략가능)] - size - family */
+            p{font: italic bold 200% "휴먼매직체",serif;}
+
+
+
+
+
+            /* 텍스트 관련 스타일 속성들 */
+            /* 1. 텍스트 정렬 */
+            p{text-align: center;} /* 가운데 정렬 */
+            p{text-align: justify;} /* 왼쪽 정렬 */
+            p{text-align: right;} /* 오른쪽 정렬 */
+
+            /* 2. 텍스트 변환 */
+            p{text-transform: uppercase;} /* 전부 대문자로 */
+            p{text-transform: lowercase;} /* 전부 소문자로 */
+            p{text-transform: capitalize;} /* 첫 글자만 대문자 */
+            
+            /* 3. 텍스트 꾸미기(줄긋기) */
+            p{text-decoration: underline;} /* 윗줄 */
+            p{text-decoration: overline;} /* 밑줄 */
+            p{text-decoration: line-through;} /* 가운데줄 */
+            p{text-decoration: none;} /* 줄 없애기 */
+
+            /* 4. 텍스트 그림자 */
+            p{text-shadow: 5px 3px 5px red;} /* 좌우 상하 높이 색깔 */
+
+            /* 5. word wrap */
+            p.aaa{
+                width: 5em;
+                border: 1px solid blue; 
+                word-wrap: break-word;  /* 영어 줄바꿈을 위해서 사용 (이걸 안쓰면 영어는 사이즈 밖으로 나감)*/
+            }
+
+            /* 6. 다중 컬럼 */
+            p.lorem{
+                column-count: 2;    /* 단 수 */
+                column-gap: 80px;   /* 간격 */
+                column-rule: 4px dashed green;  /* 분단 선 설정 (두께 선종류 색깔) */
+
+            }
+        
+
+        </style>
+    </head>
+    <body>
+        <p>Hello world</p>
+        <p>한글은 어떻게 나오는가?</p>   <!-- 적용되는게 있고 안되는게 있다 -->
+
+        <p class="aaa">
+            한글은 문제없이 다음 줄로 자동 내려갑니다.
+            asdasdfasdasdfasdasdfas dflasdjfalsdjasdjadadjalsdjaksdjlajsdasldj <!-- 사이즈를 넘어갔을 때 띄어쓰기가 있으면 그 지점이 줄바꿈 된다 -->
+        </p>
+
+        <p class="lorem">
+            <!-- 로렘 입숨 기능 (샘플 글씨) -->
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, a dicta quidem laborum commodi modi fugit atque. Quas, odit cum omnis dolore ad excepturi libero eligendi aliquid nihil ipsa animi.
+        </p>
+
+        <!-- 주의! text-align은 블럭요소만 적용가능함 -->
+        <div style="text-align: center; background-color: burlywood; line-height: 5em;">Hello</div>
+        <span style="text-align: center; background-color: aqua; letter-spacing: 0.5em;">Nice</span>   <!-- 정렬 적용 안됨 -->
+        <!-- 인라인 요소는 사이즈 변경이 안되서 width같은 건 적용 안된다 -->
+    </body>
+</html>
